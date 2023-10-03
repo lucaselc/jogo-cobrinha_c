@@ -36,6 +36,7 @@ void move_cobra(Cobra *cobra, enum Direcao direcao){
     }
 }
 
+//função apenas para desenhar o corpo da cobra utilizando a função da biblioteca
 void desenha_cobra(Cobra *cobra){
     cor(PRETO);
     for(int segmento = 1; segmento < cobra->tamanho; segmento++){
@@ -46,6 +47,8 @@ void desenha_cobra(Cobra *cobra){
     desenha_retangulo(cobra->corpo[0].x, cobra->corpo[0].y, TAM, TAM);
 }
 
+//função que é utilizada para descobrir a direção oposta da cobra, pois a intenção é que ela 
+//não possa retornar para direção oposta da direção atual
 enum Direcao oposta(enum Direcao direcao){
     switch(direcao){
     case PARA_CIMA:
@@ -59,7 +62,7 @@ enum Direcao oposta(enum Direcao direcao){
     }
 }
 
-
+//função que aumenta o corpo da cobra quando come uma maçã
 void aumenta_cobra(Cobra *cobra){
     cobra->tamanho++; 
     cobra->corpo = realloc(cobra->corpo, sizeof(Posicao)* cobra->tamanho);
@@ -67,6 +70,7 @@ void aumenta_cobra(Cobra *cobra){
     cobra->corpo[cobra->tamanho-1].y = -100;  
 }
 
+//libera o espaço que foi alocado
 void destroi_cobra(Cobra *cobra){
     free(cobra->corpo);
     free(cobra);

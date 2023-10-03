@@ -159,12 +159,12 @@ void escreveRanking(Jogador *jogadores, Jogador jogadorAtual, int numJogadores){
         }
 }
 
+//função para ser usada na função "qsort" como parâmetro
 int verifica_se_maior(Jogador* x, Jogador* y){
     return y->pontuacao-x->pontuacao;
 }
 
 void tela_fim_jogo(int score, Jogador *jogadores, int numJogadores, Jogador jogadorAtual){
-    //bool deu_gameover = false ;
     para_som("assets/entrada.mp3");
     toca_som("assets/gameover.mp3");
     jogadores[numJogadores] = jogadorAtual;
